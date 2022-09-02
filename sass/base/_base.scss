@@ -1,0 +1,140 @@
+@use "../abstracts" as *;
+
+/*------------------*/
+/* KP Global Reset  */
+/*------------------*/
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box Sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Set the default font size
+html {
+  //Defines what a single REM is
+  font-size: 62.5%; //note 1rem = 10px; 10px/16px = 62.5%
+
+  //Note always put the larger media queries (max-width) before the smaller ones as you want them to apply in that order.
+  // didnt include phone on purpose because we want the tablet portrait settings to apply
+  @include respondMax(($tab-land)) {
+    // width < 1200
+    font-size: 56.25%;
+  }
+  @include respondMax(($tab-port)) {
+    // width < 900
+    font-size: 50%;
+  }
+  // note imagine you have a viewport width of 700px, so both count, but the last one will apply, as 900 is closer to the 700 and thus should have the
+  //  closer design. if it was mobile-first, we'd need to change it around where we starting with the smaller queries, up to the larger queries
+  //  ignore the one below as that uses min-width and is on its own
+
+  @include respondMin(($big-desktop)) {
+    font-size: 75%;
+  }
+  }
+
+/* Reset Margins */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+/* Reset font weights*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* Setup the body */
+
+body {
+  /*  Setting font stuff (not default)*/
+  //font-family:;
+  //color:;
+  //font-weight:;
+
+  /*  Defaults*/
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Make images easier to work with */
+
+img,
+picture {
+  display: block;
+  width: 100%; // note: may break things
+}
+
+/* Make form elements easier to work with */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove animations for those that turned them off */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fixes that stupid hidden issue where it wasn't showing on the <picture> elements */
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* Useful for setting up selection (clicking on something and having animations/transitions without JS */
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+
+/*------------------*/
+/* End Global Reset */
+/*------------------*/
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+@use "../abstracts" as *;
+
+.u-center-text {
+  text-align: center !important;
+}
+
+// -------------- MARGINS --------------
+
+// Margin Bottom
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+
+  @include respondMax($tab-port) {
+    margin-bottom: 3rem !important;
+  }
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+
+  @include respondMax($tab-port) {
+    margin-bottom: 5rem !important;
+  }
+}
+
+// Margin Top
+
+.u-margin-top-big {
+  margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}
+
+
+// Margin Helpers
+
+.u-margin-bottom-sm {
+  margin-bottom: 2rem;
+}
+.u-margin-bottom-md {
+  margin-bottom: 3rem;
+}
+.u-margin-bottom-lg {
+  margin-bottom: 4rem;
+}
+.u-margin-bottom-hg {
+  margin-bottom: 8rem;
+}
+
+
+// Grids
+
+.u-grid-1 { // for generic content displayed like coupons, products, pics, cards
+  display: grid;
+  grid-template-columns: $grid-columns-content;
+  gap: clamp(1rem, 6rem, 8rem); // defines our gap between 1rem min, preferably 6rem, and 8rem max
+  padding: 0 clamp(2rem, 15%, 9rem); //defines the horizontal padding as 15% of the block space, can adjust
+}
+
+.u-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(7, 5vw); //defines our grid rows as 5viewwidth units, or 35 total in this case
+}
